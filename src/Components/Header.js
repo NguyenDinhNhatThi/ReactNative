@@ -1,24 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { Searchbar } from 'react-native-paper';
 
 export default function Header() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.textStyles}>This is header</Text>
-      
-    </View>
-  );
-}
+  const [searchQuery, setSearchQuery] = React.useState('');
 
-const styles = StyleSheet.create({
-  container: {
-    height: "80px",
-    width: "100%" ,
-    backgroundColor: 'red',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  textStyles : {
-    color: 'white'
-  }
+  const onChangeSearch = query => setSearchQuery(query);
+
+  return (
+    <Searchbar style={styles.search}
+      placeholder="Search"
+      onChangeText={onChangeSearch}
+      value={searchQuery}
+    />
+  );
+};
+export const styles = StyleSheet.create({
+search:{
+  width:"100%",
+  height:"auto",
+  backgroundColor:"#FFCE31",
+}
 });
+

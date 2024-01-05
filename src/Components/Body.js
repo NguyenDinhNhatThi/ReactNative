@@ -1,28 +1,52 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
+import { ImageSlider } from "react-native-image-slider-banner";
 
-export default function Body() {
+const Body = () => {
+
   return (
-    <View style={styles.container}>
-      <Text style ={styles.textStyle}>Đăng nhập</Text>
-      <div>
-        <input></input>
-      </div>
-      <StatusBar style="auto" />
+    <View>
+      <ImageSlider
+        data={[
+          { img: 'https://animota.net/cdn/shop/files/TOP_banner_04_6db5e85b-d8fe-4973-939e-703a5e2aa852.png?v=1696584429' },
+          { img: 'https://animota.net/cdn/shop/files/TOP_banner_01.png?v=1693440492' },
+          { img: 'https://animota.net/cdn/shop/files/TOP_banner_02.png?v=1693440515' }
+        ]}
+        autoPlay={false}
+        onItemChanged={(item) => console.log("item", item)}
+        closeIconColor="#fff"
+      />
+      <SafeAreaView
+        style={styles.view}>
+          <Text>Product</Text>
+      </SafeAreaView>
+
     </View>
+
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex : 1,
-    magrinTop :'300px ',
-    backgroundColor: "black",
-    alignItems:"center",
-    justifyContent: 'bottom',
-    color:"white"
+  view: {
+    width: "100%",
+    flex: 1,
+    justifyContent: "center"
   },
-  textStyle :{
-    color : "white"
-  }
+  body: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
+  text: {
+    padding: 10,
+  },
+  tinyLogo: {
+    width: '100%',
+    height: 100,
+
+    justifyContent: "center"
+  },
 });
+
+export default Body;
